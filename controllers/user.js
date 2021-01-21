@@ -138,13 +138,19 @@ exports.createCashOrder = async (req, res) => {
         finalAmount = userCart.cartTotal
     }
 
+    let NDS = 0.12;
 
+    let NDSAmmount = userCart.cartTotal * NDS;
+
+    let amountWithNDS = userCart.cartTotal + NDSAmmount
 
     let newOrder = await new Order({
         products: userCart.products,
         paymentIntent: {
             id: uuid(),
             amount: finalAmount,
+            nds: NDSAmmount,
+            withNDS: amountWithNDS,
             currency: "тенге",
             status: "наличными по доставке",
             created: Date.now(),
@@ -178,6 +184,7 @@ exports.orders = async (req, res) => {
     let user = await User.findOne({ email: req.user.email });
 
     let userOrder = await Order.find({ orderedBy: user._id })
+        .sort("-createdAt")
         .populate("products.product")
         .exec();
 

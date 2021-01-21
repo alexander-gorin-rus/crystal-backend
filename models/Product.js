@@ -33,6 +33,9 @@ const productSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "Category"
     },
+    nn: {
+        type: String
+    },
     subs: [
         {
             type: ObjectId,

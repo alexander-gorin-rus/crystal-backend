@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
 const orderSchema = new mongoose.Schema({
-
     products: [
         {
             product: {
@@ -20,7 +19,7 @@ const orderSchema = new mongoose.Schema({
             "Not processed",
             "Processing",
             "Delivered",
-            "Canceled"
+            "Deleted"
         ]
     },
     orderedBy: {

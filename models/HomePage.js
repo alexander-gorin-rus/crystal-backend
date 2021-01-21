@@ -25,6 +25,15 @@ const homePageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    iin: {
+        type: String
+    },
+    responsiblePerson: {
+        type: String
+    },
+    appendix: {
+        type: String
+    },
     slug: {
         type: String,
         unique: true,

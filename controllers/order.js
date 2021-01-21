@@ -1,4 +1,6 @@
 const Order = require('../models/Order');
+const Cart = require('../models/Cart');
+const User = require('../models/User');
 
 exports.createOrder = async (req, res) => {
     try {
@@ -33,5 +35,21 @@ exports.deleteOrder = async (req, res) => {
         })
     } catch (err) {
 
+    }
+}
+
+exports.readOrder = async (req, res) => {
+    try {
+        let order = await Order.findById(req.params.id)
+        .sort('-createdAt')
+        .populate("products.product")
+        .populate('orderedBy')
+        .exec()
+
+        res.json(order)
+    } catch (err) {
+        return res.status(400).json({
+            message: 'Не удалось найти такой заказ'
+        })
     }
 }
