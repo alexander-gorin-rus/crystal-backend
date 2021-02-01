@@ -29,3 +29,17 @@ exports.adminCheck = async (req, res, next) => {
         next();
     }
 }
+
+exports.managerCheck = async (req, res, next) => {
+    const { email } = req.user;
+
+    const managerUser = await User.findOne({ email }).exec();
+
+    if (managerUser.role !== 'manager') {
+        res.status(403).json({
+            err: 'Ресурс менеджера, вход запрещен'
+        });
+    } else {
+        next();
+    }
+}
