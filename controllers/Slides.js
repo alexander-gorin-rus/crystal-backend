@@ -7,10 +7,7 @@ exports.createSlider = async (req, res) => {
         const slider = await new Slide(req.body).save()
         res.json(slider);
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
 
@@ -19,9 +16,7 @@ exports.getSlides = async (req, res) => {
         const slides = await Slide.find({}).exec();
         res.json(slides)
     } catch (err) {
-        res.status(400).json({
-            err: err.message,
-        })
+        console.log(err);
     }
 }
 
@@ -45,9 +40,6 @@ exports.updateSlider = async (req, res) => {
         res.json(updated)
     } catch (err) {
         console.log(err);
-        res.status(400).json({
-            err: err.message
-        })
     }
 }
 
@@ -58,8 +50,5 @@ exports.deleteSlider = async (req, res) => {
         res.json(deleted)
     } catch (err) {
         console.log(err);
-        res.status(400).json({
-            err: err.message
-        })
     }
 }

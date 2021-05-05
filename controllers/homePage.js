@@ -9,27 +9,9 @@ exports.create = async (req, res) => {
         const newHomePage = await new HomePage(req.body).save();
         res.json(newHomePage);
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
-
-// exports.createImage = async (req, res) => {
-
-//     upload(req, res, err => {
-//         if (err) {
-//             return res.json({ success: false, err })
-//         }
-//         return res.json({
-//             success: true,
-//             image: res.req.file.path,
-//             fileName: res.req.file.filename
-//         })
-//     })
-
-// }
 
 exports.read = async (req, res) => {
     let getHomePage = await HomePage.find({})
@@ -46,13 +28,10 @@ exports.update = async (req, res) => {
         const updated = await HomePage.findOneAndUpdate(
             { slug: req.params.slug },
             req.body,
-            { new: true });
+            { new: true })
         res.json(updated).exec()
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
 
@@ -62,8 +41,7 @@ exports.remove = async (req, res) => {
             .exec();
         res.json(deleted);
     } catch (err) {
-        console.log(err)
-        return res.status(400).send('Не удалось удалить домашнюю страницу');
+        console.log(err);
     }
 }
 
@@ -79,10 +57,7 @@ exports.backgroundCreate = async (req, res) => {
         const background = await new Background(req.body).save()
         res.json(background)
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
 
@@ -92,8 +67,7 @@ exports.backgroundRead = async (req, res) => {
             .exec();
         res.json(background)
     } catch (err) {
-        console.log(err)
-        return res.status(400).send('Не удалось отобразить фоновое изображение');
+        console.log(err);
     }
 }
 
@@ -114,10 +88,7 @@ exports.backgroundUpdate = async (req, res) => {
             { new: true });
         res.json(updated).exec()
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
 
@@ -127,7 +98,6 @@ exports.backgroundDelete = async (req, res) => {
             .exec();
         res.json(deleted);
     } catch (err) {
-        console.log(err)
-        return res.status(400).send('Не удалось удалить фоновое изображение');
+        console.log(err);
     }
 }

@@ -14,9 +14,7 @@ exports.createOrder = async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        
     }
 }
 
@@ -25,16 +23,15 @@ exports.deleteOrder = async (req, res) => {
         let order = await Order.findByIdAndRemove(req.params.id);
         order.remove((err) => {
             if (err) {
-                return res.status(400).json({
-                    err: console.log(err)
-                })
+                return res.status(400).send('Не удалось удалить заказ')
             }
             res.json({
                 message: 'Заказ удален'
             })
         })
     } catch (err) {
-
+        console.log(err)
+        
     }
 }
 
@@ -48,8 +45,6 @@ exports.readOrder = async (req, res) => {
 
         res.json(order)
     } catch (err) {
-        return res.status(400).json({
-            message: 'Не удалось найти такой заказ'
-        })
+        console.log(err);
     }
 }

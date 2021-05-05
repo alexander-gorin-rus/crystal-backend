@@ -9,10 +9,7 @@ exports.create = async (req, res) => {
         const newProduct = await new Product(req.body).save();
         res.json(newProduct);
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
 
@@ -76,10 +73,7 @@ exports.update = async (req, res) => {
             { new: true });
         res.json(updated).exec()
     } catch (err) {
-        console.log(err)
-        res.status(400).json({
-            err: err.message
-        })
+        console.log(err);
     }
 }
 
@@ -89,8 +83,7 @@ exports.remove = async (req, res) => {
             .exec();
         res.json(deleted);
     } catch (err) {
-        console.log(err)
-        return res.status(400).send('Не удалось удалить продукт');
+        console.log(err);
     }
 }
 

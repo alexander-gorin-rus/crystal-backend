@@ -9,7 +9,7 @@ exports.create = async (req, res) => {
         res.json(sub)
     } catch (err) {
         console.log(err)
-        res.status(400).send('Create category error');
+        return res.status(400).send('Create category error');
     }
 }
 
@@ -30,9 +30,7 @@ exports.read = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(404).json({
-            err: "Подкатегория не найдена"
-        })
+        console.log(err);
     }
 }
 
@@ -46,8 +44,7 @@ exports.update = async (req, res) => {
         );
         res.json(updated);
     } catch (err) {
-        console.log(err)
-        res.status(400).send('Не удалось обновить подкатегорию');
+        console.log(err);
     }
 }
 
@@ -56,7 +53,6 @@ exports.remove = async (req, res) => {
         const deleted = await Sub.findOneAndDelete({ slug: req.params.slug });
         res.json(deleted);
     } catch (err) {
-        console.log(err)
-        res.status(400).send('Не удалось удалить подкатегорию');
+        console.log(err);
     }
 }

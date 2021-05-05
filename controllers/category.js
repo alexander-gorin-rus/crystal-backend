@@ -9,8 +9,7 @@ exports.create = async (req, res) => {
         const category = await Category({ name, slug: slugify(name) }).save();
         res.json(category)
     } catch (err) {
-        console.log(err)
-        res.status(400).send('Create category error');
+        console.log(err);
     }
 }
 
@@ -27,7 +26,6 @@ exports.list = async (req, res) => {
 exports.read = async (req, res) => {
     try {
         const category = await Category.findOne({ slug: req.params.slug }).exec();
-        //res.json(category);
         const products = await Product.find({ category })
             .populate('category')
             .sort([['volume', 'asc']])
@@ -38,9 +36,7 @@ exports.read = async (req, res) => {
             products
         })
     } catch (err) {
-        res.status(404).json({
-            err: "Category not found"
-        })
+        console.log(err);
     }
 }
 
@@ -62,8 +58,7 @@ exports.update = async (req, res) => {
         );
         res.json(updated);
     } catch (err) {
-        console.log(err)
-        res.status(400).send('Update category error');
+        console.log(err);
     }
 }
 
@@ -72,7 +67,6 @@ exports.remove = async (req, res) => {
         const deleted = await Category.findOneAndDelete({ slug: req.params.slug });
         res.json(deleted);
     } catch (err) {
-        console.log(err)
-        res.status(400).send('Delete category error');
+        console.log(err);
     }
 }
