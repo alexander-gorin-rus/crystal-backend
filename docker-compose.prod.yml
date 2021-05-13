@@ -10,4 +10,6 @@ services:
                 NODE_ENV: production
         environment: 
             - NODE_ENV=production
+            - MONG0_USER=${MONG0_USER}
+            - MONGO_PASSWORD=989991
         command: node server.js
