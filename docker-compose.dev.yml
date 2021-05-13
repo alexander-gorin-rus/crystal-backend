@@ -13,14 +13,14 @@ services:
             - /app/node_modules
         environment: 
             - NODE_ENV=development
-            - MONG0_USER=alexander
-            - MONGO_PASSWORD=989991
+            - MONG0_USER=${MONG0_USER}
+            - MONGO_PASSWORD=${MONGO_PASSWORD}
             
         command: npm run dev
     mongo: 
         image: mongo
         environment: 
-            - MONGO_INITDB_ROOT_USERNAME=alexander
-            - MONGO_INITDB_ROOT_PASSWORD=989991
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
         volumes: 
             - mongo-db:/data/db

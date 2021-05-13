@@ -8,11 +8,7 @@ services:
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     crysral-server:
         build: .
-        # ports: 
-        #     - "5000:5000"
-        # volumes: 
-        #     - ./:/app
-        #     - /app/node_modules
+        image: alexandergorin78/crystal
         env_file: 
             - ./.env
         depends_on: 
@@ -21,8 +17,8 @@ services:
     mongo: 
         image: mongo
         environment: 
-            - MONGO_INITDB_ROOT_USERNAME=alexander
-            - MONGO_INITDB_ROOT_PASSWORD=989991
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
         volumes: 
             - mongo-db:/data/db
 
