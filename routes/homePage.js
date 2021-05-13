@@ -35,4 +35,8 @@ router.get('/home/:slug', readOne);
 router.put('/home-update/:slug', authCheck, adminCheck, update);
 router.delete('/home-delete/:slug', authCheck, adminCheck, remove);
 
+router.get('/fake', (req, res) => {
+    res.send('Hello Alexander Gorin Let us see if proxy works corrently')
+})
+
 module.exports = router;

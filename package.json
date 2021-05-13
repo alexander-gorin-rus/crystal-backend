@@ -4,16 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon server",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@david.kucsai/react-pdf-table": "^0.3.0",
     "@react-pdf/renderer": "^1.6.12",
     "body-parser": "^1.19.0",
     "cloudinary": "^1.23.0",
@@ -29,10 +26,12 @@
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
-    "nodemon": "^2.0.6",
     "react-id-generator": "^3.0.1",
     "slugify": "^1.4.6",
     "uniqueid": "^1.0.0",
     "uuidv4": "^6.2.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

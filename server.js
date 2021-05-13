@@ -32,6 +32,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(fileUpload());
+app.enable("trust proxy");
 
 //Routes autoloading
 readdirSync('./routes').map((r) => app.use("/api", require("./routes/" + r)));

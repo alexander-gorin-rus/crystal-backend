@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://crystal-shop-kz:989991asG78@cluster0.todw5.mongodb.net/Crystal?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://crystal-shop-kz:989991asG78@cluster0.todw5.mongodb.net/Crystal?retryWrites=true&w=majority",
+    "mongo": "mongodb://alexander:989991@mongo:27017/?authSource=admin"
 }
